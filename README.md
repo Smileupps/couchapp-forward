@@ -1,11 +1,14 @@
+# Couchapp requests forwarder
+https://github.com/Smileupps/couchapp-forward
+
 This design document receives and forwards requests, using couchdb root as base starting path.
 
-# USE CASES
+## USE CASES
 
 - to restrict a set of requests only to specific usernames/roles
 - example: ddoc "/smileupps/_design/_couchos/" provides both a couchapp editor and a restricted version of futon/fauxton, which prevents all guests or regular users to invoke usually unrestricted couchdb handlers (_all_dbs, _all_docs, ...). This allows to safely use futon or fauxton, being sure none can access your database list or retrieve documents stored within unrestricted databases.
 
-# HOW TO 
+## HOW TO 
 
 1. put this ddoc "_design/_forward" into the restricted database with name *restricted*
 
@@ -29,7 +32,7 @@ restricted.smileupps.com = /mydb/_design/myddoc/_rewrite/public/
 
 4. This allows all requests to restricted.smileupps.com, to be correctly forwarded to the second rule only if user is authenticated and allowed on *restricted* db
 
-# RESTRICTED DATABASES:
+## RESTRICTED DATABASES:
 
 As *restricted* database you can use:
 * *_users*, which is by default allowed to administrators only
